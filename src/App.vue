@@ -1,28 +1,50 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <AdvWrapper />
+    <NavBar ref="navBar" />
+    <SectionContent1 />
+    <SectionContent2 ref="sectionContent2" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import AdvWrapper from "./components/AdvWrapper.vue";
+import NavBar from "./components/nav/NavBar.vue";
+import SectionContent1 from "./components/SectionContent1.vue";
+import SectionContent2 from "./components/SectionContent2.vue";
 export default {
-  name: 'App',
+  name: "App",
   components: {
-    HelloWorld
-  }
-}
+    AdvWrapper,
+    NavBar,
+    SectionContent1,
+    SectionContent2,
+  },
+  mounted() {
+    window.onresize = () => {
+      this.$refs.sectionContent2.setClassName();
+      this.$refs.navBar.setShowNavItem();
+    };
+  },
+};
 </script>
 
 <style>
+* {
+  padding: 0;
+  margin: 0;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: "SF Pro SC", "SF Pro Text", "SF Pro Icons", "PingFang SC",
+    "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+}
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 </style>
