@@ -28,7 +28,7 @@
       </li>
 
       <li class="nav-bar-icon serach-icon">
-        <a href="https://www.apple.com.cn/search">
+        <a href="https://www.apple.com.cn/search" @click.prevent="clickSearch">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="15px"
@@ -40,7 +40,44 @@
             ></path>
           </svg>
         </a>
+        <el-collapse-transition>
+          <div class="nav-item-menu transition-box" v-show="searchMenuVisible">
+            <div class="nav-item-search-input-div">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="15px"
+                height="44px"
+                viewBox="0 0 15 44"
+              >
+                <path
+                  d="M14.298,27.202l-3.87-3.87c0.701-0.929,1.122-2.081,1.122-3.332c0-3.06-2.489-5.55-5.55-5.55c-3.06,0-5.55,2.49-5.55,5.55 c0,3.061,2.49,5.55,5.55,5.55c1.251,0,2.403-0.421,3.332-1.122l3.87,3.87c0.151,0.151,0.35,0.228,0.548,0.228 s0.396-0.076,0.548-0.228C14.601,27.995,14.601,27.505,14.298,27.202z M1.55,20c0-2.454,1.997-4.45,4.45-4.45 c2.454,0,4.45,1.997,4.45,4.45S8.454,24.45,6,24.45C3.546,24.45,1.55,22.454,1.55,20z"
+                ></path>
+              </svg>
+              <input
+                type="text"
+                class="nav-item-search-input"
+                placeholder="搜索 apple.com.cn"
+              />
+            </div>
+            <div
+              class="nav-item-menu-group"
+              v-for="group in searchMenu.menu"
+              :key="group.groupName"
+            >
+              <div class="nav-item-menu-group-name">{{ group.groupName }}</div>
+              <div
+                class="nav-item-menu-group-selection"
+                v-for="selection in group.groupSelections"
+                :key="selection"
+              >
+                <i class="el-icon-right"></i>
+                {{ selection }}
+              </div>
+            </div>
+          </div>
+        </el-collapse-transition>
       </li>
+
       <li class="nav-bar-icon buy-icon">
         <a href="https://www.apple.com.cn/cn/shop/goto/bag">
           <svg
@@ -198,10 +235,179 @@ export default {
             },
           ],
         },
+        {
+          itemText: "Watch",
+          menu: [
+            {
+              groupName: "探索 Apple Watch",
+              groupSelections: [
+                "探索全部 Apple Watch 表款",
+                "Apple Watch Ultra",
+                "Apple Watch Series 8",
+                "Apple Watch SE",
+                "Apple Watch Nike",
+                "Apple Watch Hermes",
+              ],
+            },
+            {
+              groupName: "选购 Apple Watch",
+              groupSelections: [
+                "选购 Apple Watch",
+                "Apple Watch 定制坊",
+                "Apple Watch 表带",
+                "Apple Watch 配件",
+                "分期付款",
+                "Apple Trade In 换购计划",
+              ],
+            },
+            {
+              groupName: "Apple Watch 相关",
+              groupSelections: ["Apple Watch 支持", "watchOS 9"],
+            },
+          ],
+        },
+        {
+          itemText: "AirPods",
+          menu: [
+            {
+              groupName: "探索 AirPods",
+              groupSelections: [
+                "探索全部 AirPods 机型",
+                "AirPods 第二代",
+                "AirPods 第三代",
+                "AirPods Pro 第二代",
+                "AirPods Max",
+              ],
+            },
+            {
+              groupName: "选购 AirPods",
+              groupSelections: ["选购 AirPods", "AirPods 配件"],
+            },
+            {
+              groupName: "AirPods 相关",
+              groupSelections: ["AirPods 支持", "AirPods Music"],
+            },
+          ],
+        },
+        {
+          itemText: "家居",
+          menu: [
+            {
+              groupName: "探索家居",
+              groupSelections: ["探索家居项目", "HomePod", "HomePod mini"],
+            },
+            {
+              groupName: "选购家居设备",
+              groupSelections: [
+                "选购 HomePod",
+                "选购 HomePod mini",
+                "家居配件",
+              ],
+            },
+            {
+              groupName: "家居相关",
+              groupSelections: [
+                "HomePod 支持",
+                "家庭 App",
+                "Apple Music",
+                "Siri",
+                "隔空播放",
+              ],
+            },
+          ],
+        },
+        {
+          itemText: "娱乐",
+          menu: [
+            {
+              groupName: "探索娱乐",
+              groupSelections: [
+                "探索娱乐内容",
+                "Apple Music",
+                "Apple 博客",
+                "App Store",
+              ],
+            },
+            {
+              groupName: "技术支持",
+              groupSelections: ["Apple Music 支持"],
+            },
+          ],
+        },
+        {
+          itemText: "配件",
+          menu: [
+            {
+              groupName: "选购配件",
+              groupSelections: [
+                "选购所有配件",
+                "Mac",
+                "iPad",
+                "iPhone",
+                "Apple Watch",
+                "AirPods",
+                "家居",
+              ],
+            },
+            {
+              groupName: "探索配件",
+              groupSelections: [
+                "来自 Apple 的配件",
+                "Beats by Dr. Dre",
+                "AirTag",
+              ],
+            },
+          ],
+        },
+        {
+          itemText: "技术支持",
+          menu: [
+            {
+              groupName: "探索技术支持",
+              groupSelections: [
+                "iPhone",
+                "Mac",
+                "iPad",
+                "Watch",
+                "AirPods",
+                "Music",
+              ],
+            },
+            {
+              groupName: "获取帮助",
+              groupSelections: ["社区", "查看保修服务", "维修", "联系我们"],
+            },
+            {
+              groupName: "实用主题",
+              groupSelections: [
+                "获取 AppleCare+ 服务计划",
+                "Apple ID 和密码",
+                "账单和订阅",
+                "查找 App",
+                "辅助功能",
+              ],
+            },
+          ],
+        },
       ],
       showNavItem: true,
       baseNavBarClassName: "nav-bar",
       colorNavBarClassName: "nav-bar-bgc1",
+      searchMenu: {
+        menu: [
+          {
+            groupName: "快速链接",
+            groupSelections: [
+              "查找零售店",
+              "配件",
+              "AirPods",
+              "AirTag",
+              "Apple Trade In 换购计划",
+            ],
+          },
+        ],
+      },
+      searchMenuVisible: false,
     };
   },
   computed: {
@@ -224,6 +430,10 @@ export default {
     },
     changeNavBarBGC(ifEnter) {
       this.colorNavBarClassName = ifEnter ? "nav-bar-bgc2" : "nav-bar-bgc1";
+    },
+    clickSearch() {
+      this.searchMenuVisible = !this.searchMenuVisible;
+      this.changeNavBarBGC(this.searchMenuVisible);
     },
   },
   mounted() {
@@ -252,8 +462,8 @@ export default {
 ul.nav-item-list {
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 220px;
+  padding-right: 220px;
   height: 100%;
 }
 li {
@@ -271,5 +481,55 @@ li {
 }
 .nav-bar-icon a {
   list-style: none;
+}
+div.nav-item-menu {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+  background-color: #161617;
+  line-height: 25px;
+  padding-top: 40px;
+}
+.nav-item-search-input-div {
+  padding-left: 220px;
+  padding-bottom: 20px;
+  color: #86868b;
+  display: flex;
+  align-content: center;
+}
+.nav-item-search-input-div input {
+  border: none;
+  background-color: #161617;
+  font-size: 24px;
+  color: #e8e8ed;
+  font-weight: 600;
+  padding-left: 10px;
+}
+.nav-item-search-input-div input:focus {
+  outline: 0;
+}
+.nav-item-menu-group {
+  padding-bottom: 60px;
+  padding-right: 10%;
+  padding-left: 220px;
+}
+.nav-item-menu-group-name {
+  color: #86868b;
+  font-size: 12px;
+  line-height: 16px;
+  padding-bottom: 10px;
+}
+.nav-item-menu-group-selection {
+  color: #e8e8ed;
+}
+.nav-item-menu-group-selection:hover {
+  cursor: pointer;
+}
+.nav-item-menu-group-selection i {
+  color: #86868b;
+  padding-right: 5px;
 }
 </style>

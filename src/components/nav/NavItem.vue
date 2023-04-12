@@ -59,7 +59,6 @@ ul.nav-item-menu {
   left: 0;
   width: 100%;
   display: flex;
-  /*justify-content: space-between;*/
   z-index: 1;
   background-color: #161617;
   line-height: 25px;
@@ -69,7 +68,7 @@ li:first-child {
   font-size: 24px;
   font-weight: 600;
   line-height: 40px;
-  padding-left: 20px;
+  padding-left: 220px;
 }
 li {
   list-style: none;

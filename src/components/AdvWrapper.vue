@@ -14,7 +14,7 @@ export default {
 <style scoped>
 .adv-wrapper {
   background-color: #282829;
-  height: 40px;
+  height: 48px;
   width: 100%;
   color: #eeeeee;
 }
@@ -23,7 +23,7 @@ export default {
   height: 100%;
   align-items: center;
   float: right;
-  margin-right: 20px;
+  margin-right: 220px;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
