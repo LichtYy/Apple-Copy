@@ -426,7 +426,7 @@ export default {
       const visibleSrceenWidth = document.body.clientWidth;
       if (visibleSrceenWidth < 830) this.showNavItem = false;
       else this.showNavItem = true;
-      console.log(visibleSrceenWidth, " | showItem", this.showNavItem);
+      // console.log(visibleSrceenWidth, " | showItem", this.showNavItem);
     },
     changeNavBarBGC(ifEnter) {
       this.colorNavBarClassName = ifEnter ? "nav-bar-bgc2" : "nav-bar-bgc1";
